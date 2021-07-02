@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { connect } from 'react-redux';
 import { setIsRoomHost } from "../store/actions";
+import { useLocation } from "react-router-dom";
 
 import "./JoinRoomPage.css";
 
 const JoinRoomPage = (props) => {
   const { setIsRoomHostAction, isRoomHost } = props;
+
+  const search = useLocation().search;
   
   useEffect(() => {
     const isRoomHost = new URLSearchParams(search).get('host');
