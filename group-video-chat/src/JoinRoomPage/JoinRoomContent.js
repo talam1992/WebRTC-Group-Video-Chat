@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { setConnectOnlyWithAudio } from '../store/actions';
 import JoinRoomInputs from './JoinRoomInputs';
 import OnluWithAudioCheckbox from './OnluWithAudioCheckbox';
+import RoomNotFoundMessage from './RoomNotFoundMessage';
 
 const JoinRoomContent = (props) => {
     const { isRoomHost, setConnectOnlyWithAudioAction, connectOnlyWithAudio } = props;
@@ -10,6 +11,8 @@ const JoinRoomContent = (props) => {
 
     const [roomIdValue, setRoomIdValue] = useState("");
     const [nameValue, setNameValue] = useState("");
+    const [showRoomNotFoundMessage, setShowRoomNotFoundMessage] = useState(false)
+
     return (
         <>
           <JoinRoomInputs
@@ -22,7 +25,8 @@ const JoinRoomContent = (props) => {
           <OnluWithAudioCheckbox 
           setConnectOnlyWithAudio={setConnectOnlyWithAudioAction}
           connectOnlyWithAudio={connectOnlyWithAudio}
-          />  
+          />
+          <RoomNotFoundMessage showRoomNotFoundMessage={showRoomNotFoundMessage} />  
         </>
     );
 };
