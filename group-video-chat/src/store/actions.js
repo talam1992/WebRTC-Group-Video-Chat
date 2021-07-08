@@ -1,7 +1,8 @@
 const Actions = {
     SET_IS_ROOM_HOST: 'SET_IS_ROOM_HOST',
     SET_IDENTITY: 'SET_IDENTITY',
-    SET_CONNECT_ONLY_WITH_AUDIO: 'SET_CONNECT_ONLY_WITH_AUDIO'
+    SET_CONNECT_ONLY_WITH_AUDIO: 'SET_CONNECT_ONLY_WITH_AUDIO',
+    SET_ROOM_ID: 'SET.ROOM_ID'
 }
 
 export const setIdentity = (identity) => {
@@ -24,5 +25,12 @@ export const setConnectOnlyWithAudio = (onlyWithAudio) => {
         onlyWithAudio
     };
 };
+
+export const setRoomId = (roomId) => {
+    return {
+        type: Actions.SET_ROOM_ID,
+        roomId
+    }
+}
 
 export default Actions;
