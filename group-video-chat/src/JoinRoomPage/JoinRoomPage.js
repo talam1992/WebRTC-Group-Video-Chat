@@ -26,7 +26,7 @@ const JoinRoomPage = (props) => {
   return <div className='join_room_page_container'>
     <div className='join_room_page_panel'>
       <JoinRoomTitle isRoomHost={isRoomHost}/>
-      <JoinRoomContent setShowLoadingOverlay={showLoadingOverlay} />
+      <JoinRoomContent setShowLoadingOverlay={setShowLoadingOverlay} />
       {showLoadingOverlay && <LoadingOverlay />}
     </div>
     </div>;
