@@ -11,6 +11,7 @@ import RoomNotFoundMessage from './RoomNotFoundMessage';
 import JoinRoomButtons from './JoinRoomButtons';
 import { useHistory } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { checkIfRoomExists } from '../utils/twilioUtils';
 
 const JoinRoomContent = (props) => {
     const { 
@@ -32,6 +33,13 @@ const JoinRoomContent = (props) => {
         setIdentityAction(nameValue);
         if (!isRoomHost) {
             // check if room exist and if yes join
+            const roomExists = await checkIfRoomExists(roomIdValue);
+            if (roomExists) {
+                setRoomId(roomIdValue);
+                history.push("/room");
+            } else {
+                setShowRoomNotFoundMessage(true);
+            }
         } else {
             setRoomIdAction(uuidv4());
             history.push("/room");
