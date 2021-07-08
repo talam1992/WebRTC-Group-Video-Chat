@@ -19,7 +19,8 @@ const JoinRoomContent = (props) => {
         setConnectOnlyWithAudioAction, 
         connectOnlyWithAudio, 
         setRoomIdAction,
-        setIdentityAction 
+        setIdentityAction,
+        setShowLoadingOverlay, 
     } = props;
 
 
@@ -33,7 +34,9 @@ const JoinRoomContent = (props) => {
         setIdentityAction(nameValue);
         if (!isRoomHost) {
             // check if room exist and if yes join
+            setShowLoadingOverlay(true);
             const roomExists = await checkIfRoomExists(roomIdValue);
+            setShowLoadingOverlay(false);
             if (roomExists) {
                 setRoomId(roomIdValue);
                 history.push("/room");
